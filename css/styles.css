@@ -1,0 +1,264 @@
+body {
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 33px;
+    color: black;
+    background-color: #F5F9F9;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    font-weight: normal;
+}
+
+:focus {
+    outline: 0;
+}
+
+h1 {
+    font-weight: bold;
+    size: 48px;
+    line-height: 62px;
+}
+
+h6 {
+    font-size: 24px;
+    line-height: 31px;
+    padding: 5px;
+}
+
+a {
+    font-size: 24px;
+    line-height: 31px;
+    text-decoration-line: underline;
+    color: #538CE2;
+}
+
+
+/* Containers for header*/
+
+.container {
+    width: 100%;
+    max-width: 1362px;
+    margin: 0 auto;
+}
+
+.container__centered {
+    width: 100%;
+    max-width: 575px;
+    margin: 0 auto;
+}
+
+
+/* Header */
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-size: 72px;
+    font-family: 'Unica One', cursive;
+    font-weight: normal;
+    color: RGBA(0, 0, 0, .48);
+    display: flex;
+    align-items: center;
+}
+
+.header__image {
+    width: 120px;
+}
+
+.header__logo a {
+    text-decoration: none;
+    color: RGBA(0, 0, 0, .48);
+    font-size: 72px;
+}
+
+hr {
+    margin: 0;
+    border-color: #E5E5E5;
+}
+
+
+/* Navigation */
+
+.nav a {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 50px;
+    font-size: 30px;
+    color: RGBA(0, 0, 0, .48);
+    text-decoration: none;
+    position: relative;
+}
+
+.nav a:hover {
+    color: #F59B2E;
+}
+
+.nav a:hover::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #F59B2E;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: -1;
+    transition: opacity .2s linear;
+}
+
+
+/* Intro */
+
+.intro__title {
+    width: 100%;
+    max-width: 564px;
+    padding-top: 30px;
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 100px;
+}
+
+.intro__image {
+    width: 372px;
+    padding-top: 30px;
+    height: auto;
+}
+
+.intro__phones {
+    height: 90vh;
+    padding-top: 30px;
+}
+
+
+/* Footer */
+
+.footer {
+    background-color: RGBA(245, 155, 46, .40);
+    font-size: 24px;
+}
+
+.footer p {
+    margin: 0 auto;
+}
+
+
+/* Login/Register containers */
+
+.authorization__container {
+    margin: 183px 310px 58px;
+    background: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.authorization__inner {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding-top: 9px;
+    padding-bottom: 59px;
+}
+
+.form__container {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    max-width: 315px;
+}
+
+.form__container p {
+    font-size: 18px;
+    line-height: 23px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+.submit__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+/* Form for login and register */
+
+.form {
+    font-size: 24px;
+    line-height: 31px;
+    padding-top: 43px;
+    text-align: left;
+}
+
+.input {
+    border: 3px solid rgba(245, 155, 46, 0.4);
+    border-radius: 15px;
+    max-width: 315px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.input__button {
+    border: 3px rgba(245, 155, 46, 0.4);
+    border-radius: 15px;
+    max-width: 315px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    background: rgba(245, 155, 46, 0.4);
+    text-align: center;
+    margin: 10px 0;
+}
+
+.input__button:focus {
+    background: rgba(245, 155, 46);
+}
+
+.img__logo {
+    max-width: 34px;
+    width: 100%;
+}
+
+.form__image__button {
+    border: 3px rgba(245, 155, 46, 0.4);
+    border-radius: 15px;
+    max-width: 315px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    background: rgba(245, 155, 46, 0.4);
+    font-size: 24px;
+}
