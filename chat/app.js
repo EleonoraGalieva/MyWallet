@@ -1,6 +1,6 @@
 const PORT_CHAT = 20000
 const PORT_ACCESS = 20001
-const MULTICAST_ADDR = '233.255.255.255'
+let MULTICAST_ADDR = undefined
 const ALLOW = 'ALLOW'
 const DENY = 'DENY'
 const REQ = 'REQUEST'
@@ -10,8 +10,8 @@ let isAdmin = false
 
 const dgram = require('dgram')
 const process = require('process')
-const readline = require('readline');
-const fs = require('fs')
+const readline = require('readline')
+const groups = require('./groups.js')
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -27,19 +27,47 @@ rl.question('Press \'1\' if you want to create chat. Press \'2\' if you want to 
     } else if (answer === '2') {
         joinChat()
     } else {
-        console.log('Wrong input')
+        console.log('Wrong input.')
     }
 })
 
 function joinChat() {
-    socketChat.bind(PORT_CHAT)
-    socketAccess.bind(PORT_ACCESS)
+    rl.question('What is your name? ', (answer) => {
+        username = answer
+        rl.question('Please enter the chat id:  ', (answer) => {
+            MULTICAST_ADDR = groups.getAddressByGroupId(answer)
+            if (MULTICAST_ADDR) {
+                socketChat.bind(PORT_CHAT)
+                socketAccess.bind(PORT_ACCESS)
+                sendAllowanceReq(process.pid, username, answer)
+            } else {
+                console.log('No group with such id found.')
+            }
+        })
+    })
+}
+
+function idInput() {
+    rl.question('Please enter the chat id:  ', (answer) => {
+        MULTICAST_ADDR = groups.addGroup(answer)
+        if (MULTICAST_ADDR) {
+            socketChat.bind(PORT_CHAT)
+            socketAccess.bind(PORT_ACCESS)
+        } else {
+            idInput()
+        }
+    })
 }
 
 function createChat() {
     isAdmin = true
-    socketChat.bind(PORT_CHAT)
-    socketAccess.bind(PORT_ACCESS)
+    rl.question('What is your name? ', (answer) => {
+        username = answer
+        if (isAdmin) {
+            username += ' (Admin)'
+            idInput()
+        }
+    })
 }
 
 socketAccess.on('listening', () => {
@@ -47,23 +75,11 @@ socketAccess.on('listening', () => {
 })
 
 socketChat.on('listening', () => {
-    const address = socketChat.address()
-    rl.question('What is your name? ', (answer) => {
-        username = answer
-        if (isAdmin) {
-            socketChat.addMembership(MULTICAST_ADDR)
-            username += ' (Admin)'
-            rl.question('Please enter the chat id:  ', (answer) => {
-                fs.writeFileSync('groupId.json', JSON.stringify({ groupId: answer }))
-                console.log('Chat created!')
-                send()
-            })
-        } else {
-            rl.question('Please enter group id: ', (answer) => {
-                sendAllowanceReq(process.pid, username, answer)
-            })
-        }
-    })
+    if (isAdmin) {
+        socketChat.addMembership(MULTICAST_ADDR)
+        console.log('New chat created!')
+        send()
+    }
 })
 
 //message to admin contains pid, groupId, type: request
@@ -71,9 +87,6 @@ socketChat.on('listening', () => {
 socketAccess.on('message', (msg, rinfo) => {
     const message = JSON.parse(msg.toString())
     if (isAdmin && message.type === REQ) {
-        if (message.groupId !== JSON.parse(fs.readFileSync('groupId.json').toString()).groupId) {
-            return sendAllowanceResp(message.pid, DENY)
-        }
         rl.question(`Would you allow access for ${message.username}? Press 'y' or 'n'    `, (answer) => {
             if (answer === 'y') {
                 sendAllowanceResp(message.pid, ALLOW)
@@ -120,3 +133,13 @@ function send() {
         sendMessage(input)
     })
 }
+
+rl.on('SIGINT', () => {
+    process.exit()
+})
+
+process.on('exit', (code) => {
+    if (isAdmin) {
+        groups.removeGroup(MULTICAST_ADDR)
+    }
+})
