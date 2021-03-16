@@ -22,7 +22,15 @@ h5,
 h6,
 p {
     margin: 0;
-    font-weight: normal;
+    font-weight: inherit;
+}
+
+button {
+    border: none;
+    background-color: inherit;
+    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 :focus {
@@ -33,6 +41,12 @@ h1 {
     font-weight: bold;
     size: 48px;
     line-height: 62px;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
 }
 
 h6 {
@@ -74,6 +88,7 @@ a {
     right: 0;
     z-index: 1000;
     background-color: white;
+    border-bottom: 1px solid #E5E5E5;
 }
 
 .header__inner {
@@ -92,18 +107,13 @@ a {
 }
 
 .header__image {
-    width: 120px;
+    width: 90px;
 }
 
 .header__logo a {
     text-decoration: none;
     color: RGBA(0, 0, 0, .48);
     font-size: 72px;
-}
-
-hr {
-    margin: 0;
-    border-color: #E5E5E5;
 }
 
 
@@ -145,6 +155,10 @@ hr {
     padding-top: 30px;
 }
 
+.intro__title h1 {
+    font-weight: normal;
+}
+
 .intro {
     display: flex;
     justify-content: space-between;
@@ -169,6 +183,8 @@ hr {
 .footer {
     background-color: RGBA(245, 155, 46, .40);
     font-size: 24px;
+    padding-top: 25px;
+    padding-bottom: 10px;
 }
 
 .footer p {
@@ -209,7 +225,7 @@ hr {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    padding-left: 10px;
 }
 
 
@@ -236,7 +252,6 @@ hr {
     border-radius: 15px;
     max-width: 315px;
     width: 100%;
-    margin: 10px 0;
     padding: 5px;
     background: rgba(245, 155, 46, 0.4);
     text-align: center;
@@ -250,6 +265,7 @@ hr {
 .img__logo {
     max-width: 34px;
     width: 100%;
+    margin-right: 10px;
 }
 
 .form__image__button {
@@ -261,4 +277,166 @@ hr {
     padding: 5px;
     background: rgba(245, 155, 46, 0.4);
     font-size: 24px;
+}
+
+
+/* Wallet page */
+
+
+/* Header */
+
+.nav__box {
+    display: flex;
+    align-items: center;
+}
+
+.user__box {
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add__transaction {
+    border: 0px #F59B2E;
+    border-radius: 15px;
+    max-width: 145px;
+    width: 100%;
+    padding: 5px 13px;
+    background: #F59B2E;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.username {
+    border: none;
+    max-width: 213px;
+    width: 100%;
+    background: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 33px;
+    color: rgba(0, 0, 0, 0.48);
+    display: flex;
+    align-items: center;
+}
+
+
+/* Main block */
+
+.transactions__container {
+    margin: 135px auto auto;
+    max-width: 1230px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 29px;
+    color: rgba(0, 0, 0, 0.48);
+}
+
+.transactions__container p {
+    margin-left: 35px;
+}
+
+.transaction {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 15px 35px;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.checkbox {
+    margin: 0;
+    transform: scale(1.5);
+    margin-right: 24px;
+}
+
+.img__category {
+    max-width: 60px;
+    width: 100%;
+    margin-left: 46px;
+}
+
+.info {
+    margin-left: auto;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 31px;
+    color: rgba(0, 0, 0, 0.48);
+    display: flex;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    font-weight: normal;
+    font-size: 29px;
+    color: #E3361E;
+}
+
+
+/* Adding transaction overflow */
+
+.adding__transaction__container {
+    max-width: 925px;
+    width: 100%;
+    font-size: 18px;
+    color: black;
+    margin: 40px auto;
+    position: initial;
+    background-color: white;
+    z-index: 10000;
+    border-radius: 0px 0px 5px 0px;
+}
+
+.overflow_container {
+    max-width: 840px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.transaction__parts {
+    display: flex;
+}
+
+.overflow__container__header {
+    color: rgba(0, 0, 0, 0.48);
+    padding: 31px 0 31px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.part__one {
+    background: #F59B2E;
+    max-width: 580px;
+}
+
+.part__three {
+    background: white;
+}
+
+.add__transaction__button {
+    border: none;
+    border-radius: 15px;
+    max-width: 221px;
+    width: 100%;
+    padding: 8px 45px;
+    background: #F59B2E;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin: 78px 197px 24px;
+}
+
+.part__two {
+    background: #EFF0F2;
+    border-radius: 0px 0px 5px 0px;
+    max-width: 345px;
+    width: 100%;
+    padding: 0px 44px 50px 26px;
 }
