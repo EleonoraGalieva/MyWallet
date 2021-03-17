@@ -1,3 +1,5 @@
+/* General settings */
+
 body {
     font-style: normal;
     font-weight: normal;
@@ -31,6 +33,10 @@ button {
     text-align: center;
     display: flex;
     align-items: center;
+    font-family: Sarabun;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
 }
 
 :focus {
@@ -63,7 +69,7 @@ a {
 }
 
 
-/* Containers for header*/
+/* Containers */
 
 .container {
     width: 100%;
@@ -75,6 +81,11 @@ a {
     width: 100%;
     max-width: 575px;
     margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -239,7 +250,7 @@ a {
 }
 
 .input {
-    border: 3px solid rgba(245, 155, 46, 0.4);
+    border: 1px solid rgba(245, 155, 46, 0.4);
     border-radius: 15px;
     max-width: 315px;
     width: 100%;
@@ -392,6 +403,7 @@ a {
     background-color: white;
     z-index: 10000;
     border-radius: 0px 0px 5px 0px;
+    display: none;
 }
 
 .overflow_container {
@@ -414,10 +426,12 @@ a {
 .part__one {
     background: #F59B2E;
     max-width: 580px;
+    margin: initial;
 }
 
 .part__three {
     background: white;
+    padding-left: 42px;
 }
 
 .add__transaction__button {
@@ -439,4 +453,84 @@ a {
     max-width: 345px;
     width: 100%;
     padding: 0px 44px 50px 26px;
+}
+
+
+/* Switch button */
+
+.switch__container {
+    display: flex;
+    justify-content: center;
+    padding-top: 19px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.selected__switch {
+    background: #FFFFFF;
+    mix-blend-mode: normal;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px 0px 0px 5px;
+    padding: 4px 34px;
+}
+
+.unselected__switch {
+    background: #F59B2E;
+    mix-blend-mode: normal;
+    border: 1px solid #FFFFFF;
+    border-radius: 0px 5px 5px 0px;
+    padding: 4px 34px;
+    color: white;
+}
+
+
+/* Forms in adding and editing a transaction */
+
+#partOne {
+    color: white;
+    font-weight: normal;
+    margin-left: 197px;
+    margin-top: 21px;
+    padding: 0;
+    font-size: 18px;
+    max-width: 221px;
+    width: 100%;
+}
+
+#partOne input {
+    border: none;
+    border-radius: 5px;
+    min-height: 32px;
+}
+
+#wallet {
+    max-width: 221px;
+    width: 100%;
+}
+
+#amount {
+    max-width: 121px;
+    width: 100%;
+}
+
+#currency {
+    max-width: 74px;
+    width: 100%;
+}
+
+#partThree input {
+    min-height: 39px;
+    border-radius: 5px;
+}
+
+#receiver {
+    min-height: 55px;
+}
+
+#comment {
+    min-height: 79px;
+}
+
+#place {
+    min-height: 39px;
 }
