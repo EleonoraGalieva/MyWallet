@@ -1,13 +1,32 @@
 /* General settings */
 
+:root {
+    --orange: rgba(245, 155, 46);
+    --lightOrange: rgba(245, 155, 46, 0.4);
+    --lightBlack: rgba(0, 0, 0, 0.48);
+    --shadowBlack: rgba(0, 0, 0, 0.25);
+    --lightGrey: #E5E5E5;
+    --link: #538CE2;
+    --black: #000;
+    --white: #fff;
+    --dark: #2E7EF5;
+    --blueOverlay: rgba(46, 126, 245, 0.3);
+    --orangeOverlay: rgba(245, 155, 46, 0.2);
+    --backgroundGray: #F5F9F9;
+    --ease: all 0.3 var(--ease) 0s;
+}
+
 body {
     font-style: normal;
     font-weight: normal;
     margin: 0;
     font-family: 'Sarabun', sans-serif;
     font-size: 33px;
-    color: black;
-    background-color: #F5F9F9;
+    color: var(--black);
+    background-color: var(--backgroundGray);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 *,
@@ -39,6 +58,10 @@ button {
     font-size: 18px;
 }
 
+main {
+    flex-grow: 1;
+}
+
 :focus {
     outline: 0;
 }
@@ -65,7 +88,7 @@ a {
     font-size: 24px;
     line-height: 31px;
     text-decoration-line: underline;
-    color: #538CE2;
+    color: var(--link);
 }
 
 
@@ -93,13 +116,11 @@ a {
 
 .header {
     width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
-    background-color: white;
-    border-bottom: 1px solid #E5E5E5;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--lightGrey);
 }
 
 .header__inner {
@@ -112,7 +133,7 @@ a {
     font-size: 72px;
     font-family: 'Unica One', cursive;
     font-weight: normal;
-    color: RGBA(0, 0, 0, .48);
+    color: var(--lightBlack);
     display: flex;
     align-items: center;
 }
@@ -123,7 +144,7 @@ a {
 
 .header__logo a {
     text-decoration: none;
-    color: RGBA(0, 0, 0, .48);
+    color: var(--lightBlack);
     font-size: 72px;
 }
 
@@ -135,13 +156,13 @@ a {
     vertical-align: top;
     margin: 0 50px;
     font-size: 30px;
-    color: RGBA(0, 0, 0, .48);
+    color: var(--lightBlack);
     text-decoration: none;
     position: relative;
 }
 
 .nav a:hover {
-    color: #F59B2E;
+    color: var(--orange);
 }
 
 .nav a:hover::after {
@@ -149,7 +170,7 @@ a {
     display: block;
     width: 100%;
     height: 2px;
-    background-color: #F59B2E;
+    background-color: var(--lightOrange);
     position: absolute;
     top: 100%;
     left: 0;
@@ -174,7 +195,6 @@ a {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    margin-top: 100px;
 }
 
 .intro__image {
@@ -192,7 +212,7 @@ a {
 /* Footer */
 
 .footer {
-    background-color: RGBA(245, 155, 46, .40);
+    background-color: var(--lightOrange);
     font-size: 24px;
     padding-top: 25px;
     padding-bottom: 10px;
@@ -206,9 +226,9 @@ a {
 /* Login/Register containers */
 
 .authorization__container {
-    margin: 183px 310px 58px;
-    background: white;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 29px 310px 58px;
+    background: var(--white);
+    box-shadow: 0px 4px 4px var(--shadowBlack);
 }
 
 .authorization__inner {
@@ -229,7 +249,7 @@ a {
 .form__container p {
     font-size: 18px;
     line-height: 23px;
-    color: rgba(0, 0, 0, 0.48);
+    color: var(--lightBlack);
 }
 
 .submit__container {
@@ -250,7 +270,7 @@ a {
 }
 
 .input {
-    border: 1px solid rgba(245, 155, 46, 0.4);
+    border: 1px solid var(--lightOrange);
     border-radius: 15px;
     max-width: 315px;
     width: 100%;
@@ -259,18 +279,18 @@ a {
 }
 
 .input__button {
-    border: 3px rgba(245, 155, 46, 0.4);
+    border: 3px var(--lightOrange);
     border-radius: 15px;
     max-width: 315px;
     width: 100%;
     padding: 5px;
-    background: rgba(245, 155, 46, 0.4);
+    background: var(--lightOrange);
     text-align: center;
     margin: 10px 0;
 }
 
 .input__button:focus {
-    background: rgba(245, 155, 46);
+    background: var(--orange);
 }
 
 .img__logo {
@@ -280,13 +300,13 @@ a {
 }
 
 .form__image__button {
-    border: 3px rgba(245, 155, 46, 0.4);
+    border: 3px var(--lightOrange);
     border-radius: 15px;
     max-width: 315px;
     width: 100%;
     margin: 10px 0;
     padding: 5px;
-    background: rgba(245, 155, 46, 0.4);
+    background: var(--lightOrange);
     font-size: 24px;
 }
 
@@ -308,12 +328,12 @@ a {
 }
 
 .add__transaction {
-    border: 0px #F59B2E;
+    border: 0px var(--orange);
     border-radius: 15px;
     max-width: 145px;
     width: 100%;
     padding: 5px 13px;
-    background: #F59B2E;
+    background: var(--orange);
     text-align: center;
     font-weight: bold;
     font-size: 18px;
@@ -323,11 +343,11 @@ a {
     border: none;
     max-width: 213px;
     width: 100%;
-    background: white;
+    background: var(--white);
     text-align: center;
     font-weight: bold;
     font-size: 33px;
-    color: rgba(0, 0, 0, 0.48);
+    color: var(--lightBlack);
     display: flex;
     align-items: center;
 }
@@ -336,12 +356,12 @@ a {
 /* Main block */
 
 .transactions__container {
-    margin: 135px auto auto;
+    margin: 37px auto auto;
     max-width: 1230px;
     width: 100%;
     font-weight: bold;
     font-size: 29px;
-    color: rgba(0, 0, 0, 0.48);
+    color: var(--lightBlack);
 }
 
 .transactions__container p {
@@ -349,9 +369,9 @@ a {
 }
 
 .transaction {
-    border: 1px solid rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--shadowBlack);
     border-radius: 15px;
-    background-color: white;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     padding: 15px 35px;
@@ -377,7 +397,7 @@ a {
     font-weight: normal;
     font-size: 24px;
     line-height: 31px;
-    color: rgba(0, 0, 0, 0.48);
+    color: var(--lightBlack);
     display: flex;
 }
 
@@ -397,10 +417,10 @@ a {
     max-width: 925px;
     width: 100%;
     font-size: 18px;
-    color: black;
-    margin: 40px auto;
+    color: var(--black);
+    margin: 20px auto;
     position: initial;
-    background-color: white;
+    background-color: var(--white);
     z-index: 10000;
     border-radius: 0px 0px 5px 0px;
     display: none;
@@ -417,20 +437,20 @@ a {
 }
 
 .overflow__container__header {
-    color: rgba(0, 0, 0, 0.48);
+    color: var(--lightBlack);
     padding: 31px 0 31px;
     display: flex;
     justify-content: space-between;
 }
 
 .part__one {
-    background: #F59B2E;
+    background: var(--orange);
     max-width: 580px;
     margin: initial;
 }
 
 .part__three {
-    background: white;
+    background: var(--white);
     padding-left: 42px;
 }
 
@@ -440,15 +460,15 @@ a {
     max-width: 221px;
     width: 100%;
     padding: 8px 45px;
-    background: #F59B2E;
+    background: var(--orange);
     text-align: center;
-    color: white;
+    color: var(--white);
     font-size: 18px;
     margin: 78px 197px 24px;
 }
 
 .part__two {
-    background: #EFF0F2;
+    background: var(--backgroundGray);
     border-radius: 0px 0px 5px 0px;
     max-width: 345px;
     width: 100%;
@@ -463,31 +483,31 @@ a {
     justify-content: center;
     padding-top: 19px;
     line-height: 23px;
-    color: #000000;
+    color: var(--black);
 }
 
 .selected__switch {
-    background: #FFFFFF;
+    background: var(--white);
     mix-blend-mode: normal;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--white);
     border-radius: 5px 0px 0px 5px;
     padding: 4px 34px;
 }
 
 .unselected__switch {
-    background: #F59B2E;
+    background: var(--orange);
     mix-blend-mode: normal;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--white);
     border-radius: 0px 5px 5px 0px;
     padding: 4px 34px;
-    color: white;
+    color: var(--white);
 }
 
 
 /* Forms in adding and editing a transaction */
 
 #partOne {
-    color: white;
+    color: var(--white);
     font-weight: normal;
     margin-left: 197px;
     margin-top: 21px;
@@ -533,4 +553,11 @@ a {
 
 #place {
     min-height: 39px;
+}
+
+
+/* About page */
+
+.wrapper {
+    background-color: var(--dark);
 }
