@@ -335,7 +335,7 @@ a {
     color: var(--lightBlack);
 }
 
-.add__transaction {
+.add__button {
     border: 1.5px solid var(--orange);
     border-radius: 15px;
     max-width: 145px;
@@ -430,10 +430,10 @@ a {
     background-color: var(--white);
     z-index: 10000;
     border-radius: 0px 0px 5px 0px;
-    display: none;
+    /* display: none; */
 }
 
-.overflow_container {
+.overflow__container {
     max-width: 840px;
     width: 100%;
     margin: 0 auto;
@@ -685,6 +685,42 @@ a {
 }
 
 
-/* Statistics page */
+/* Categories page and overflow*/
 
-.total {}
+.overflow__category {
+    max-width: 580px;
+    width: 100%;
+    font-size: 18px;
+    color: var(--black);
+    margin: 20px auto;
+    position: initial;
+    background-color: var(--white);
+    z-index: 10000;
+    border-radius: 0px 0px 5px 0px;
+    display: flex;
+    flex-direction: column;
+    display: none;
+}
+
+.overflow__category__container {
+    max-width: 540px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.overflow__category__container form {
+    padding-bottom: 40px;
+    padding-top: 0;
+}
+
+.add__category__button {
+    border: 1px solid var(--orange);
+    border-radius: 15px;
+    max-width: 150px;
+    width: 100%;
+    background: var(--orange);
+    color: var(--black);
+    font-size: 18px;
+    text-align: center;
+    margin-top: 30px;
+}

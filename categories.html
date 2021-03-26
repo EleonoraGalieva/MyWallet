@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun&family=Unica+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://kit.fontawesome.com/9a4d92866a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__box">
+                <div class="header__logo">
+                    <img src="/img/wallet_icon.png" class="header__image">
+                </div>
+                <nav class="nav">
+                    <a href="#">Transactions</a>
+                    <a href="#">Categories</a>
+                    <a href="#">Statistics</a>
+                </nav>
+                <div class="user__box">
+                    <button class="add__button">+ Category</button>
+                    <button class="username">
+                        username
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Categories:</h1>
+        <ul>
+            <li>Food</li>
+            <li>Fun</li>
+            <li>Groceries</li>
+            <li>Home</li>
+            <li>Salary</li>
+            <li>Shopping</li>
+            <li>Transport</li>
+            <li>Travel</li>
+        </ul>
+    </main>
+    <article class="overflow__category" id="addCategory">
+        <div class="overflow__category__container">
+            <div class="overflow__container__header">
+                <h2>ADD NEW CATEGORY</h2>
+                <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="0.353553" y1="0.646447" x2="46.3536" y2="46.6464" stroke="black" stroke-opacity="0.48"/>
+                    <path d="M46.5 0.5L0.5 46.5" stroke="black" stroke-opacity="0.48"/>
+                    </svg>
+            </div>
+            <form method="POST" name="category" class="form">
+                <label for="categoryName">Category name:</label><br>
+                <input type="text" id="categoryName" name="category" class="input" required><br>
+                <label for="imageCategory">Category icon (optional):</label><br>
+                <input type="file" id="imageCategory" name="category"><br>
+                <input type="submit" value="Add category" class="add__category__button">
+            </form>
+        </div>
+    </article>
+</body>
+
+</html>
