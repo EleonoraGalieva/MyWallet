@@ -10,8 +10,8 @@
     --black: #000;
     --white: #fff;
     --dark: #2E7EF5;
-    --blueOverlay: rgba(46, 126, 245, 0.3);
-    --orangeOverlay: rgba(245, 155, 46, 0.2);
+    --blueOverlay: rgba(46, 126, 245, 0.5);
+    --orangeOverlay: rgba(245, 155, 46, 0.4);
     --backgroundGray: #F5F9F9;
     --ease: all 0.3 var(--ease) 0s;
 }
@@ -163,19 +163,6 @@ a {
 
 .nav a:hover {
     color: var(--orange);
-}
-
-.nav a:hover::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--lightOrange);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: -1;
-    transition: opacity .2s linear;
 }
 
 
@@ -559,5 +546,120 @@ a {
 /* About page */
 
 .wrapper {
+    min-height: 87.9vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "top";
+}
+
+.top {
+    display: grid;
     background-color: var(--dark);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    grid-area: top;
+    grid-template-columns: 1fr 600px 600px 1fr;
+    grid-gap: 20px;
+    grid-template-areas: ".top__profile top__content  .";
+    background-image: linear-gradient(to right, var(--blueOverlay), var(--orangeOverlay)), url(/img/background_image.jpg);
+}
+
+.top__content {
+    grid-area: top__content;
+    text-align: right;
+    padding: 80px;
+}
+
+.title {
+    font-family: Unica One;
+    font-size: 72px;
+    line-height: 85px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+}
+
+.subtitle {
+    color: var(--white);
+    margin-bottom: 50px;
+}
+
+.underline {
+    text-decoration: none;
+    position: relative;
+}
+
+.social {
+    position: relative;
+}
+
+.underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    border-width: 2px;
+    border-style: solid;
+    background-color: var(--orange);
+    color: var(--orange);
+    animation-name: underline;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes underline {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.social__item {
+    display: flex;
+    margin: 10px 0;
+    color: var(--white);
+    text-decoration: none;
+    right: 0;
+    position: absolute;
+}
+
+.social__copy {
+    color: inherit;
+    text-decoration: inherit;
+    margin-left: 30px;
+}
+
+.social__copy:hover {
+    color: var(--orange);
+}
+
+.top__profile {
+    grid-area: top__profile;
+    align-self: center;
+    justify-self: center;
+    background-image: url(/img/girl_with_phone.jpg);
+    width: 448px;
+    height: 583px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width:1280px) {
+    .top {
+        grid-template-columns: 1fr;
+        grid-template-areas: "top__content" "top__profile";
+    }
+    .top__profile {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .top__content {
+        transform: scale(0.85);
+    }
 }
