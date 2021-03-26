@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun&family=Unica+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://kit.fontawesome.com/9a4d92866a.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/jsapi"></script>
+    <script>
+        google.load("visualization", "1", {
+            packages: ["corechart"]
+        });
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Category', 'Income', 'Spendings'],
+                ['Food', 0, 70],
+                ['Fun', 2, 100],
+                ['Groceries', 100, 1000],
+                ['Home', 0, 300],
+                ['Salary', 4000, 0],
+                ['Shopping', 0, 300],
+                ['Transport', 0, 300],
+                ['Travel', 0, 300]
+            ]);
+            var options = {
+                title: 'Income & Spendings per categories:',
+                hAxis: {
+                    title: 'Category'
+                },
+                vAxis: {
+                    title: 'Dollars'
+                }
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('diagram'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav__box">
+                <div class="header__logo">
+                    <img src="/img/wallet_icon.png" class="header__image">
+                </div>
+                <nav class="nav">
+                    <a href="#">Transactions</a>
+                    <a href="#">Categories</a>
+                    <a href="#">Statistics</a>
+                </nav>
+                <div class="user__box">
+                    <button class="username">
+                        username
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="container">
+        <form class="form">
+            <label>From: </label>
+            <input type="date" class="input">
+            <label>To:</label>
+            <input type="date" class="input"><br>
+        </form>
+        <section class="flex">
+            <div class="total">
+                Total spendings: 50$
+            </div>
+            <div class="total">
+                Total income: 50$
+            </div>
+        </section>
+        <article id="diagram" style="min-height: 500px;width:100%"></article>
+    </main>
+</body>
+
+</html>
