@@ -66,6 +66,10 @@ ul>li {
     list-style-type: none;
 }
 
+ol>li {
+    text-align: start;
+}
+
 ul {
     padding: 0;
 }
@@ -106,6 +110,8 @@ a {
     width: 100%;
     max-width: 1362px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
 }
 
 .container__centered {
@@ -124,12 +130,6 @@ a {
     right: 0;
     background-color: var(--white);
     border-bottom: 1px solid var(--lightGrey);
-}
-
-.header__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .header__logo {
@@ -176,7 +176,6 @@ a {
 .intro__title {
     width: 100%;
     max-width: 564px;
-    padding-top: 30px;
 }
 
 .intro__title h1 {
@@ -199,21 +198,6 @@ a {
     height: 90vh;
     padding-top: 30px;
 }
-
-
-/* .intro__phones::after {
-    content: "";
-    animation-name: phones;
-}
-
-@keyframes phones {
-    0% {
-        width: 0%;
-    }
-    100% {
-        width: 100%;
-    }
-} */
 
 
 /* Footer */
@@ -322,11 +306,6 @@ a {
 
 
 /* Header */
-
-.nav__box {
-    display: flex;
-    align-items: center;
-}
 
 .user__box {
     margin-left: auto;
@@ -687,6 +666,10 @@ a {
 
 /* Categories page and overflow*/
 
+.categories {
+    padding-left: 100px;
+}
+
 .overflow__category {
     max-width: 580px;
     width: 100%;
@@ -699,7 +682,7 @@ a {
     border-radius: 0px 0px 5px 0px;
     display: flex;
     flex-direction: column;
-    display: none;
+    /* display: none; */
 }
 
 .overflow__category__container {
