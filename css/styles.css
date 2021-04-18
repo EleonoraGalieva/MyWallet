@@ -16,6 +16,21 @@
     --ease: all 0.3 var(--ease) 0s;
 }
 
+[data-theme="dark"] {
+    --orange: rgba(245, 155, 46);
+    --lightOrange: rgba(245, 155, 46);
+    --lightBlack: #fff;
+    --shadowBlack: rgba(255, 255, 255, 0.25);
+    --lightGrey: #fff;
+    --link: #538CE2;
+    --black: #fff;
+    --white: #000;
+    --dark: #2E7EF5;
+    --blueOverlay: rgba(46, 126, 245, 0.5);
+    --orangeOverlay: rgba(245, 155, 46, 0.4);
+    --backgroundGray: #000;
+}
+
 body {
     font-style: normal;
     font-weight: normal;
@@ -56,6 +71,7 @@ button {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
+    color: var(--black);
 }
 
 main {
@@ -226,6 +242,12 @@ a {
 
 
 /* Intro */
+
+.switch__themes {
+    border: 1px solid var(--lightOrange);
+    border-radius: 15px;
+    margin-bottom: 5px;
+}
 
 .intro__title {
     max-width: 564px;
