@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>My Wallet</title>
     <link rel="icon" href="/img/wallet_icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun&family=Unica+One&display=swap" rel="stylesheet">
@@ -19,20 +18,26 @@
                 <img src="/img/wallet_icon.png" class="header__image">
                 <a href="#">MyWallet</a>
             </div>
-            <nav class="nav">
-                <a href="#">Home</a>
-                <a href="#">About us</a>
-                <a href="#">Login</a>
-            </nav>
+            <div class="dropdown">
+                <button id="dropdownBtn"><img class="dropdown__button" src="/img/menu_icon_phone.png"></button>
+                <nav class="nav" id="nav">
+                    <a href="#">Home</a>
+                    <a href="#">About us</a>
+                    <a href="#">Login</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="index__container">
         <div class="left__side">
             <div class="intro__title">
                 <h1>We make finances<br> easy.</h1>
             </div>
-            <h3>Try our new app.</h3>
+            <div class="intro__title__mobile">
+                <h1>We make<br> finances easy.</h1>
+            </div>
+            <h3 id="subtitle">Try our new app.</h3>
             <img src="/img/app_store_google.png" alt="App store and Google play" class="intro__image">
         </div>
         <img src="/img/phones.png" alt="Phones image" class="intro__phones">
