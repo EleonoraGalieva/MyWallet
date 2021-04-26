@@ -100,18 +100,6 @@ h1 {
     line-height: 62px;
 }
 
-h2 {
-    font-weight: normal;
-    font-size: 36px;
-    line-height: 47px;
-}
-
-h6 {
-    font-size: 24px;
-    line-height: 31px;
-    padding: 5px;
-}
-
 a {
     font-size: 24px;
     line-height: 31px;
@@ -336,6 +324,12 @@ a {
     text-align: center;
     padding-top: 9px;
     padding-bottom: 59px;
+}
+
+.authorization__inner__subtite {
+    font-size: 24px;
+    line-height: 31px;
+    padding: 5px;
 }
 
 .form__container {
@@ -624,6 +618,12 @@ a {
 
 
 /* Adding transaction overflow */
+
+.overflow__container__heading {
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 47px;
+}
 
 .modal {
     display: none;
