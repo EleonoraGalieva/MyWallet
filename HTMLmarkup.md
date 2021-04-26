@@ -22,5 +22,5 @@
 
 ## Wallet Page
 ![wallet-1](https://user-images.githubusercontent.com/48092813/116126335-31dde980-a6cf-11eb-9198-86082fc51b01.png)
-![wallet-2](https://user-images.githubusercontent.com/48092813/116126366-3efad880-a6cf-11eb-8461-475592299b8d.png)
-![wallet-3](https://user-images.githubusercontent.com/48092813/116126427-4d48f480-a6cf-11eb-9e2d-188c94a917af.png)
+![wallet-2](https://user-images.githubusercontent.com/48092813/116127465-8df53d80-a6d0-11eb-9b56-d8883323e5c8.png)
+![wallet-3](https://user-images.githubusercontent.com/48092813/116127582-ae24fc80-a6d0-11eb-81c2-0d68b9c97f19.png)
