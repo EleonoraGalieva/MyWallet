@@ -797,7 +797,7 @@ a {
     grid-template-columns: 1fr 600px 600px 1fr;
     grid-gap: 20px;
     grid-template-areas: ".top__profile top__content  .";
-    background-image: linear-gradient(to right, var(--blueOverlay), var(--orangeOverlay)), url(/img/background_image.jpg);
+    background-image: linear-gradient(to right, var(--blueOverlay), var(--orangeOverlay)), url(img/background_image.jpg);
 }
 
 .top__content {
