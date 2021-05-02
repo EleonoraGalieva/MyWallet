@@ -875,7 +875,7 @@ a {
     grid-area: top__profile;
     align-self: center;
     justify-self: center;
-    background-image: url(/img/girl_with_phone.jpg);
+    background-image: url(img/girl_with_phone.jpg);
     width: 448px;
     height: 583px;
     background-size: cover;
