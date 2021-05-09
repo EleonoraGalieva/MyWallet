@@ -324,6 +324,7 @@ a:hover {
     .intro__phones {
         max-width: 252px;
         height: unset;
+        animation-name: none;
     }
     .intro__title {
         display: none;
@@ -332,7 +333,7 @@ a:hover {
         display: inline;
     }
     .left__side {
-        display: flex;
+        display: inline;
     }
 }
 
