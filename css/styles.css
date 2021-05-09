@@ -914,13 +914,13 @@ a {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     row-gap: 1em;
+    column-gap: 1em;
 }
 
 .category {
     background: var(--white);
     border: 3px solid var(--lightOrange);
     border-radius: 15px;
-    max-width: 149px;
     width: 100%;
     font-style: italic;
     font-size: 36px;
