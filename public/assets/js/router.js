@@ -6,6 +6,7 @@ import login from './views/login.js'
 import register from './views/register.js'
 import stats from './views/stats.js'
 import wallet from './views/wallet.js'
+import error404 from './views/error404.js'
 
 const routes = {
     '/': home,
@@ -21,7 +22,7 @@ const router = async() => {
     const content = null || document.getElementById('page_container');
     let request = parseRequestURL();
     let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
-    let page = routes[parsedURL] ? routes[parsedURL] : 1 //: Error404
+    let page = routes[parsedURL] ? routes[parsedURL] : error404
     console.log(page)
     content.innerHTML = await page.render();
     await page.after_render();

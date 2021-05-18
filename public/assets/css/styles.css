@@ -1149,3 +1149,17 @@ a:hover {
         text-align: center;
     }
 }
+
+
+/* Error page */
+
+.error__page {
+    margin: 80px auto 0;
+    text-align: center;
+}
+
+.error__img {
+    max-width: 500px;
+    width: 100%;
+    object-fit: fill;
+}
