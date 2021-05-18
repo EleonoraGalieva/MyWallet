@@ -5,25 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <title>My Wallet</title>
-    <link rel="icon" href="img/wallet_icon.png">
+    <link rel="icon" href="assets/img/wallet_icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun&family=Unica+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="https://kit.fontawesome.com/9a4d92866a.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body id="page_container">
 
     <header class="header">
         <div class="container">
             <div class="header__logo">
-                <img src="img/wallet_icon.png" class="header__image">
-                <a href="#">MyWallet</a>
+                <img src="assets/img/wallet_icon.png" class="header__image">
+                <a href="/">MyWallet</a>
             </div>
             <div class="dropdown">
-                <button id="dropdownBtn"><img class="dropdown__button" src="img/menu_icon_phone.png"></button>
+                <button id="dropdownBtn"><img class="dropdown__button" src="assets/img/menu_icon_phone.png"></button>
                 <nav class="nav" id="nav">
-                    <a href="#">Home</a>
-                    <a href="#">About us</a>
-                    <a href="#">Login</a>
+                    <a href="/">Home</a>
+                    <a href="/#/about">About us</a>
+                    <a href="/#/login">Login</a>
                 </nav>
             </div>
         </div>
@@ -39,9 +40,9 @@
                 <h1>We make<br> finances easy.</h1>
             </div>
             <h2 id="subtitle">Try our new app.</h2>
-            <img src="img/app_store_google.png" alt="App store and Google play" class="intro__image">
+            <img src="assets/img/app_store_google.png" alt="App store and Google play" class="intro__image">
         </div>
-        <img src="img/phones.png" alt="Phones image" class="intro__phones">
+        <img src="assets/img/phones.png" alt="Phones image" class="intro__phones">
     </main>
 
     <footer class="footer">
@@ -49,7 +50,8 @@
             <p>© 2021 Eleonora </p>
         </div>
     </footer>
-    <script src="/js/theme-change.js"></script>
+    <script src="assets/js/theme-change.js"></script>
+    <script type="module" src="assets/js/router.js"></script>
 </body>
 
 </html>
