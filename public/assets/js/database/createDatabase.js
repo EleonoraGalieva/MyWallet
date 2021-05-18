@@ -1,5 +1,4 @@
 import firebase from 'firebase/app'
-import 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: 'AIzaSyBK5wSILhdm5-Avr8r9HuWuuS5tMWISJq4',
@@ -14,5 +13,9 @@ class MyWalletDatabase {
         if (firebase.apps.length === 0) {
             firebase.initializeApp(firebaseConfig);
         }
+        this.firebase = firebase.database();
     }
 }
+
+let walletDatabase = MyWalletDatabase();
+export default walletDatabase;

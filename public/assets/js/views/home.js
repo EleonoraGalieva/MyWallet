@@ -20,7 +20,7 @@ let home = {
 
                         <main class="container" id="index__container">
                             <div class="left__side">
-                                <button id="theme-switcher" class="switch__themes">Click me to switch themes!</button>
+                                <button id="themeSwitcher" class="switch__themes">Click me to switch themes!</button>
                                 <div class="intro__title">
                                     <h1>We make finances<br> easy.</h1>
                                 </div>
@@ -37,11 +37,22 @@ let home = {
                             <div class="container">
                                 <p>© 2021 Eleonora </p>
                             </div>
-                        </footer>
-                        <script src="assets/js/theme-change.js"></script>`
+                        </footer>`
         return view;
     },
-    after_render: async() => {}
+    after_render: async() => {
+        let themeSwitcher = document.getElementById("themeSwitcher")
+        let theme = sessionStorage.getItem("theme") === undefined ? "light" : sessionStorage.getItem("theme")
+        console.log(theme)
+        document.documentElement.setAttribute("data-theme", theme);
+
+        themeSwitcher.addEventListener("click", () => {
+            let currentTheme = sessionStorage.getItem("theme") === undefined ? "light" : sessionStorage.getItem("theme");
+            theme = currentTheme === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", theme);
+            sessionStorage.setItem("theme", theme);
+        })
+    }
 }
 
 export default home;

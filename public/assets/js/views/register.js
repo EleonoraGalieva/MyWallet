@@ -22,7 +22,7 @@ let register = {
                             <input type="password" id="passwordLogin" name="register" class="input" required><br>
                             <label for="email">Confirm password:</label><br>
                             <input type="password" id="confirm_password" name="register" class="input" required><br>
-                            <input type="submit" value="Sign Up" class="input__button form">
+                            <input type="submit" value="Sign Up" class="input__button form" id="signUpEmail">
                         </form>
                         <p>or sign up with...</p>
                         <button class="form__image__button">
@@ -42,9 +42,7 @@ let register = {
                         </div></button>
                     </section>
                 </article>
-            </main>
-            <script src="/js/theme-change.js"></script>
-            <script src="/js/auth.js"></script>`
+            </main>`
         return view;
     },
     after_render: async() => {}
