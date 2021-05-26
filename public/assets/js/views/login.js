@@ -46,11 +46,11 @@ let login = {
         });
 
         document.getElementById('signInGoogle').addEventListener('click', () => {
-            authorization.signUpWithGoogle();
+            authorization.signInWithGoogle();
         });
 
         document.getElementById('signInFacebook').addEventListener('click', () => {
-            authorization.signUpWithFacebook();
+            authorization.signInWithFacebook();
         });
 
         async function submitLoginForm() {

@@ -10,11 +10,3 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 let database = firebase.database();
-firebase.auth().onAuthStateChanged((user) => {
-    let currentUser = user;
-    if (user) {
-        sessionStorage.setItem('currentUserId', user.uid);
-    } else {
-        sessionStorage.removeItem('currentUserId');
-    }
-});

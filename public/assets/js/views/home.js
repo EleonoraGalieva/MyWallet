@@ -43,7 +43,6 @@ let home = {
     after_render: async() => {
         let themeSwitcher = document.getElementById("themeSwitcher")
         let theme = sessionStorage.getItem("theme") === undefined ? "light" : sessionStorage.getItem("theme")
-        console.log(theme)
         document.documentElement.setAttribute("data-theme", theme);
 
         themeSwitcher.addEventListener("click", () => {

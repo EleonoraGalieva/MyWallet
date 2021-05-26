@@ -20,7 +20,7 @@ let wallet = {
                         <button class="add__button" id="addTransactionBtn">+ Transaction</button>
                         <div class="user__dropdown">
                             <button class="username">
-                                username
+                                <div  id="username">user</div>
                                 <i class="fas fa-caret-down"></i>
                             </button>
                             <div class="user__dropdown__content">
@@ -130,7 +130,8 @@ let wallet = {
     after_render: async() => {
         document.getElementById('logOut').addEventListener('click', () => {
             authorization.logOut();
-        })
+        });
+        document.getElementById('username').textContent = localStorage.getItem('currentUserEmail');
     }
 }
 

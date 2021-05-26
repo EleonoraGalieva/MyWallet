@@ -1,4 +1,13 @@
 class Authorization {
+    addToDatabase(email) {
+        firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+            username: email,
+            email,
+            transactions: [],
+            categories: ['food', 'fun', 'groceries', 'home', 'salary', 'shop', 'transport', 'travel']
+        })
+    }
+
     signUpWithEmailAndPassword(email, password, confirmPassword) {
         if (password !== confirmPassword) {
             alert('Please, check entered passwords!');
@@ -8,6 +17,7 @@ class Authorization {
             firebase.auth().createUserWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     window.location.hash = '/wallet';
+                    this.addToDatabase(email);
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -19,6 +29,18 @@ class Authorization {
         let provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then((result) => {
+                this.addToDatabase(result.user.email);
+                window.location.hash = '/wallet';
+            })
+            .catch((error) => {
+                console.log(error.message);
+            })
+    }
+
+    signInWithGoogle() {
+        let provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+            .then((result) => {
                 window.location.hash = '/wallet';
             })
             .catch((error) => {
@@ -27,6 +49,18 @@ class Authorization {
     }
 
     signUpWithFacebook() {
+        let provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                this.addToDatabase(result.user.email);
+                window.location.hash = '/wallet';
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    }
+
+    signInWithFacebook() {
         let provider = new firebase.auth.FacebookAuthProvider();
         firebase.auth().signInWithPopup(provider)
             .then((result) => {
@@ -54,10 +88,19 @@ class Authorization {
     logOut() {
         firebase.auth().signOut()
             .then(() => {
+                localStorage.removeItem('currentUserId');
                 window.location.hash = '/';
             });
     }
 }
+
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        localStorage.setItem('currentUserEmail', user.email);
+    } else {
+        localStorage.removeItem('currentUserEmail');
+    }
+});
 
 let authorization = new Authorization();
 
