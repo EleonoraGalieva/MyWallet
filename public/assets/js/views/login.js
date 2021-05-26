@@ -1,3 +1,4 @@
+import authorization from '../database/authorization.js'
 let login = {
     render: async() => {
         let view = /*html*/ `
@@ -15,36 +16,49 @@ let login = {
                         <h1>Authorization</h1>
                         <h2 class="authorization__inner__subtite">Don't have an account yet? <a href="/#/register">Click here to create one!</a></h2>
                         <section class="form__container">
-                            <form method="POST" name="login" class="form">
+                            <div method="POST" name="login" class="form" id="loginForm">
                                 <label for="email">Email:</label><br>
-                                <input type="text" id="email" name="login" class="input" required><br>
+                                <input type="text" id="emailLogin" name="login" class="input" required><br>
                                 <label for="email">Password:</label><br>
-                                <input type="password" id="password" name="login" class="input" required><br>
-                                <input type="submit" value="Sign In" class="input__button form">
-                            </form>
+                                <input type="password" id="passwordLogin" name="login" class="input" required><br>
+                                <input type="submit" value="Sign In" class="input__button form" id="signInEmail">
+                            </div>
                             <p>or sign In with...</p>
-                            <button class="form__image__button">
+                            <button class="form__image__button" id="signInGoogle">
                                 <div class="submit__container">
                                     <img class="img__logo" src="assets/img/google_logo.png">
                                 Sign In with Google
                             </div></button>
-                            <button class="form__image__button">
+                            <button class="form__image__button" id="signInFacebook">
                                 <div class="submit__container">
                                     <img class="img__logo" src="assets/img/facebook_logo.png">
                                 Sign In with Facebook
-                            </div></button>
-                            <button class="form__image__button">
-                                <div class="submit__container">
-                                    <img class="img__logo" src="assets/img/apple_logo.png">
-                                Sign In with Apple
-                            </div></button>
+                            </div></button>                            
                         </section>
                     </article>
                 </main>
                 <script src="/js/theme-change.js"></script>`
         return view
     },
-    after_render: async() => {}
+    after_render: async() => {
+        document.getElementById('signInEmail').addEventListener('click', () => {
+            submitLoginForm();
+        });
+
+        document.getElementById('signInGoogle').addEventListener('click', () => {
+            authorization.signUpWithGoogle();
+        });
+
+        document.getElementById('signInFacebook').addEventListener('click', () => {
+            authorization.signUpWithFacebook();
+        });
+
+        async function submitLoginForm() {
+            let email = document.getElementById('emailLogin').value;
+            let password = document.getElementById('passwordLogin').value;
+            authorization.signInWithEmailAndPassword(email, password);
+        }
+    }
 }
 
 export default login

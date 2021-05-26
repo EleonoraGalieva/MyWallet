@@ -51,7 +51,7 @@ let home = {
             theme = currentTheme === "dark" ? "light" : "dark";
             document.documentElement.setAttribute("data-theme", theme);
             sessionStorage.setItem("theme", theme);
-        })
+        });
     }
 }
 

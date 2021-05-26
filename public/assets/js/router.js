@@ -23,7 +23,6 @@ const router = async() => {
     let request = parseRequestURL();
     let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
     let page = routes[parsedURL] ? routes[parsedURL] : error404
-    console.log(page)
     content.innerHTML = await page.render();
     await page.after_render();
 }

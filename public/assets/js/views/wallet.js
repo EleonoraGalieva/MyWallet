@@ -1,3 +1,4 @@
+import authorization from '../database/authorization.js'
 let wallet = {
     render: async() => {
         let view = /*html*/
@@ -23,7 +24,7 @@ let wallet = {
                                 <i class="fas fa-caret-down"></i>
                             </button>
                             <div class="user__dropdown__content">
-                                <a href="/">Logout</a>
+                                <a id="logOut">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -126,7 +127,11 @@ let wallet = {
             <script src="/js/theme-change.js"></script>`
         return view;
     },
-    after_render: async() => {}
+    after_render: async() => {
+        document.getElementById('logOut').addEventListener('click', () => {
+            authorization.logOut();
+        })
+    }
 }
 
 export default wallet
