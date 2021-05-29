@@ -1024,14 +1024,30 @@ a:hover {
     font-size: 36px;
     color: var(--lightBlack);
     text-align: center;
-    padding: 10px 0 20px 0;
+    padding: 10px 0 15px 0;
     display: inline-block;
+}
+
+.category:hover {
+    transform: scale(1.08);
+    cursor: pointer;
 }
 
 .category__img {
     max-width: 85px;
     object-fit: cover;
     margin-top: 12px;
+}
+
+.category__delete {
+    font-size: 24px;
+    font-style: normal;
+    color: #E3361E;
+    padding-top: 5px;
+}
+
+.category__delete:hover {
+    text-shadow: 0px 4px 4px var(--shadowBlack);
 }
 
 .modal__category__content {

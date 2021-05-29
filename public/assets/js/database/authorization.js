@@ -1,11 +1,10 @@
+import Category from './models/category.js'
 class Authorization {
     addToDatabase(email) {
         firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
             username: email,
-            email,
-            transactions: [],
-            categories: ['food', 'fun', 'groceries', 'home', 'salary', 'shop', 'transport', 'travel']
-        })
+            email
+        });
     }
 
     signUpWithEmailAndPassword(email, password, confirmPassword) {
@@ -18,6 +17,7 @@ class Authorization {
                 .then((userCredential) => {
                     window.location.hash = '/wallet';
                     this.addToDatabase(email);
+                    Category.addBasicCategories();
                 })
                 .catch((error) => {
                     console.error(error.message);

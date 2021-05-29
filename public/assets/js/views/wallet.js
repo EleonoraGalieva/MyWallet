@@ -163,7 +163,9 @@ let wallet = {
                 currentTransaction.place = document.getElementById('place').value;
                 currentTransaction.category = document.getElementById('category').value;
                 currentTransaction.comment = document.getElementById('comment').value;
-                currentTransaction.image = document.getElementById('image').value;
+                if (document.getElementById('image').value != null) {
+                    currentTransaction.image = document.getElementById('image').value;
+                }
                 currentTransaction.receiver = document.getElementById('receiver').value;
                 currentTransaction.currency = document.getElementById('currency').value;
                 Transaction.updateTransaction(currentTransaction);
