@@ -54,7 +54,7 @@ let register = {
             authorization.signUpWithFacebook();
         });
 
-        async function submitRegisterForm() {
+        function submitRegisterForm() {
             let email = document.getElementById('emailRegister').value;
             let password = document.getElementById('passwordRegister').value;
             let confirmPassword = document.getElementById('confirmPassword').value;

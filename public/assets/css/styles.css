@@ -195,6 +195,7 @@ a:hover {
 
 .nav a:hover {
     color: var(--orange);
+    cursor: pointer;
 }
 
 .nav a:active {
@@ -518,6 +519,7 @@ a:hover {
     display: flex;
     align-items: center;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .user__dropdown {
@@ -540,6 +542,7 @@ a:hover {
     color: var(--lightBlack);
     text-decoration: none;
     font-size: 24px;
+    cursor: pointer;
 }
 
 .user__dropdown:hover .user__dropdown__content {
@@ -611,6 +614,7 @@ a:hover {
 .transaction__dropdown {
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .transaction__dropdown__content {
@@ -651,8 +655,15 @@ a:hover {
     margin-left: auto;
     font-weight: normal;
     font-size: 25px;
-    color: #E3361E;
     margin-right: 20px;
+}
+
+.income {
+    color: #32CD32;
+}
+
+.outcome {
+    color: #E3361E;
 }
 
 @media only screen and (max-width:600px) {
@@ -758,6 +769,7 @@ a:hover {
     color: var(--white);
     font-size: 18px;
     margin: 78px 197px 24px;
+    cursor: pointer;
 }
 
 .part__two {
@@ -783,17 +795,31 @@ a:hover {
     background: var(--white);
     mix-blend-mode: normal;
     border: 1px solid var(--white);
-    border-radius: 5px 0px 0px 5px;
     padding: 4px 34px;
+}
+
+.left__switch {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.left__switch:hover {
+    cursor: pointer;
 }
 
 .unselected__switch {
     background: var(--orange);
     mix-blend-mode: normal;
     border: 1px solid var(--white);
-    border-radius: 0px 5px 5px 0px;
     padding: 4px 34px;
     color: var(--white);
+}
+
+.right__switch {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.right__switch:hover {
+    cursor: pointer;
 }
 
 
@@ -829,6 +855,7 @@ a:hover {
 #currency {
     max-width: 74px;
     width: 100%;
+    border-radius: 5px;
 }
 
 #partThree input {

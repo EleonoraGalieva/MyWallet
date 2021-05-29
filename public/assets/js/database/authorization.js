@@ -20,7 +20,7 @@ class Authorization {
                     this.addToDatabase(email);
                 })
                 .catch((error) => {
-                    console.log(error.message);
+                    console.error(error.message);
                 });
         }
     }
@@ -33,7 +33,7 @@ class Authorization {
                 window.location.hash = '/wallet';
             })
             .catch((error) => {
-                console.log(error.message);
+                console.error(error.message);
             })
     }
 
@@ -44,7 +44,7 @@ class Authorization {
                 window.location.hash = '/wallet';
             })
             .catch((error) => {
-                console.log(error.message);
+                console.error(error.message);
             })
     }
 
@@ -56,7 +56,7 @@ class Authorization {
                 window.location.hash = '/wallet';
             })
             .catch((error) => {
-                console.log(error.message);
+                console.error(error.message);
             });
     }
 
@@ -67,7 +67,7 @@ class Authorization {
                 window.location.hash = '/wallet';
             })
             .catch((error) => {
-                console.log(error.message);
+                console.error(error.message);
             });
     }
 
@@ -81,7 +81,7 @@ class Authorization {
                 if (errorCode === 'auth/wrong-password') {
                     alert('Wrong password!');
                 }
-                console.log(error.message);
+                console.error(error.message);
             });
     }
 
@@ -97,8 +97,10 @@ class Authorization {
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
         localStorage.setItem('currentUserEmail', user.email);
+        localStorage.setItem('currentUserId', user.uid);
     } else {
         localStorage.removeItem('currentUserEmail');
+        localStorage.removeItem('currentUserId');
     }
 });
 

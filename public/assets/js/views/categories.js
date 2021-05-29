@@ -18,12 +18,12 @@ let categories = {
                             <div class="user__box">
                                 <button class="add__button" id="addCategoryBtn">+ Category</button>
                                 <div class="user__dropdown">
-                                    <button class="username">
-                                        username
-                                        <i class="fas fa-caret-down"></i>
-                                    </button>
+                                <button class="username">
+                                    <div  id="username">user</div>
+                                    <i class="fas fa-caret-down"></i>
+                                </button>
                                     <div class="user__dropdown__content">
-                                        <a href="#">Logout</a>
+                                        <a id="logOut">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,29 @@ let categories = {
                     <script src="/js/theme-change.js"></script>`
         return view
     },
-    after_render: async() => {}
+    after_render: async() => {
+        document.getElementById('logOut').addEventListener('click', () => {
+            authorization.logOut();
+        });
+        document.getElementById('username').textContent = localStorage.getItem('currentUserEmail');
+        var modalCategory = document.getElementById("addCategory");
+        var addCategoryBtn = document.getElementById("addCategoryBtn");
+        var closeCategoryOwerflow = document.getElementById("closeCategoryOwerflow");
+
+        addCategoryBtn.onclick = function() {
+            modalCategory.style.display = "block";
+        }
+
+        closeCategoryOwerflow.onclick = function() {
+            modalCategory.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modalCategory) {
+                modalCategory.style.display = "none";
+            }
+        }
+    }
 }
 
 export default categories
