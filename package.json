@@ -1,0 +1,22 @@
+{
+    "name": "mywallet",
+    "version": "1.0.0",
+    "description": "A repository for frontend course.<br>\r ## Topic:\r Expense manager. Personal finance tracker. You can record all your spendings and income to understand where does your money actually go. <br>\r Link for figma design: https://www.figma.com/file/orJXBrFmlcCiZOgr8ySHPp/MyWallet?node-id=13%3A49 <br>",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/EleonoraGalieva/MyWallet.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/EleonoraGalieva/MyWallet/issues"
+    },
+    "homepage": "https://github.com/EleonoraGalieva/MyWallet#readme",
+    "dependencies": {
+        "firebase": "^8.6.1"
+    }
+}
