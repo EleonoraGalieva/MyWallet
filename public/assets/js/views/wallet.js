@@ -250,47 +250,47 @@ let wallet = {
                                 </div>
                             </div>
                         </section>`
+                            let transactionsLiEdit = document.getElementsByName('editTransactionBtn');
+                            for (let i = 0; i < transactionsLiEdit.length; i++) {
+                                transactionsLiEdit[i].addEventListener('click', function(e) {
+                                    mode = 'edit';
+                                    document.getElementById('heading').textContent = 'EDIT TRANSACTION';
+                                    document.getElementById('submitTransaction').value = 'Edit transaction';
+                                    modalTransaction.style.display = 'block';
+                                    let selectesLi = e.target.closest('li');
+                                    let selectedIndex = Array.from(ul.children).indexOf(selectesLi);
+                                    currentTransaction = transactionList[transactionList.length - selectedIndex - 1];
+                                    if (currentTransaction.type === 'income') {
+                                        document.getElementById('income').className = 'selected__switch left__switch';
+                                        document.getElementById('outcome').className = 'unselected__switch right__switch';
+                                        type = 'income';
+                                    } else {
+                                        document.getElementById('income').className = 'unselected__switch left__switch';
+                                        document.getElementById('outcome').className = 'selected__switch right__switch';
+                                        type = 'outcome';
+                                    }
+                                    document.getElementById('comment').value = currentTransaction.comment;
+                                    document.getElementById('amount').value = currentTransaction.amount;
+                                    document.getElementById('date').value = currentTransaction.date;
+                                    document.getElementById('place').value = currentTransaction.place;
+                                    document.getElementById('category').value = currentTransaction.category;
+                                    document.getElementById('image').value = currentTransaction.image;
+                                    document.getElementById('receiver').value = currentTransaction.receiver;
+                                    document.getElementById('currency').value = currentTransaction.currency;
+                                });
+                            }
+                            let transactionsLiDelete = document.getElementsByName('deleteTransactionBtn');
+                            for (let i = 0; i < transactionsLiDelete.length; i++) {
+                                transactionsLiDelete[i].addEventListener('click', function(e) {
+                                    let selectedLi = e.target.closest('li');
+                                    let selectedIndex = Array.from(ul.children).indexOf(selectedLi);
+                                    currentTransaction = transactionList[transactionList.length - selectedIndex - 1];
+                                    Transaction.deleteTransaction(currentTransaction);
+                                    selectedLi.parentNode.removeChild(selectedLi);
+                                });
+                            }
                         });
                     ul.prepend(li);
-                }
-                let transactionsLiEdit = document.getElementsByName('editTransactionBtn');
-                for (let i = 0; i < transactionsLiEdit.length; i++) {
-                    transactionsLiEdit[i].addEventListener('click', function(e) {
-                        mode = 'edit';
-                        document.getElementById('heading').textContent = 'EDIT TRANSACTION';
-                        document.getElementById('submitTransaction').value = 'Edit transaction';
-                        modalTransaction.style.display = 'block';
-                        let selectesLi = e.target.closest('li');
-                        let selectedIndex = Array.from(ul.children).indexOf(selectesLi);
-                        currentTransaction = transactionList[transactionList.length - selectedIndex - 1];
-                        if (currentTransaction.type === 'income') {
-                            document.getElementById('income').className = 'selected__switch left__switch';
-                            document.getElementById('outcome').className = 'unselected__switch right__switch';
-                            type = 'income';
-                        } else {
-                            document.getElementById('income').className = 'unselected__switch left__switch';
-                            document.getElementById('outcome').className = 'selected__switch right__switch';
-                            type = 'outcome';
-                        }
-                        document.getElementById('comment').value = currentTransaction.comment;
-                        document.getElementById('amount').value = currentTransaction.amount;
-                        document.getElementById('date').value = currentTransaction.date;
-                        document.getElementById('place').value = currentTransaction.place;
-                        document.getElementById('category').value = currentTransaction.category;
-                        document.getElementById('image').value = currentTransaction.image;
-                        document.getElementById('receiver').value = currentTransaction.receiver;
-                        document.getElementById('currency').value = currentTransaction.currency;
-                    });
-                }
-                let transactionsLiDelete = document.getElementsByName('deleteTransactionBtn');
-                for (let i = 0; i < transactionsLiDelete.length; i++) {
-                    transactionsLiDelete[i].addEventListener('click', function(e) {
-                        let selectedLi = e.target.closest('li');
-                        let selectedIndex = Array.from(ul.children).indexOf(selectedLi);
-                        currentTransaction = transactionList[transactionList.length - selectedIndex - 1];
-                        Transaction.deleteTransaction(currentTransaction);
-                        selectedLi.parentNode.removeChild(selectedLi);
-                    });
                 }
             }).catch(err => {
                 console.error(err);

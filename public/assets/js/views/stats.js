@@ -1,3 +1,5 @@
+import Transaction from '../database/models/transaction.js'
+import Category from '../database/models/category.js'
 let stats = {
     render: async() => {
         let view = /*html*/ `<header class="header">
@@ -15,16 +17,15 @@ let stats = {
                                         </nav>
                                     </div>
                                     <div class="user__box">
-                                        <button class="add__button">+ Transaction</button>
                                         <div class="user__dropdown">
-                                            <button class="username">
-                                                username
-                                                <i class="fas fa-caret-down"></i>
-                                            </button>
-                                            <div class="user__dropdown__content">
-                                                <a href="#">Logout</a>
-                                            </div>
+                                        <button class="username">
+                                            <div  id="username">user</div>
+                                            <i class="fas fa-caret-down"></i>
+                                        </button>
+                                        <div class="user__dropdown__content">
+                                            <a id="logOut">Logout</a>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                         </header>
@@ -32,17 +33,18 @@ let stats = {
 
                         <main class="statistics__container">
                             <section class="stats">
-                                <form class="form">
+                                <div class="form">
                                     <label for="from">From: </label>
                                     <label for="to">To:</label>
                                     <input type="date" class="input" id="from">
                                     <input type="date" class="input" id="to">
-                                </form>
+                                    <input class="input__button" id="find" type="submit" value="Find">
+                                </div>
                                 <p>
-                                    Total spendings: 50$
+                                    Total spendings: <span id="totalSpendings"></span>
                                 </p>
                                 <p>
-                                    Total income: 50$
+                                    Total income: <span id="totalIncome"></span>
                                 </p>
                                 <br>
                                 <article id="diagram" style="min-width: 600px; margin-right: 20px"></article>
@@ -56,44 +58,82 @@ let stats = {
                                     </ol>
                                 </div>
                             </aside>
-                        </main>
-                        <script src="/js/theme-change.js"></script>
-                        <script src="https://kit.fontawesome.com/9a4d92866a.js" crossorigin="anonymous"></script>
-                        <script src="https://www.google.com/jsapi"></script>
-                        <script>
-                            google.load("visualization", "1", {
-                                packages: ["corechart"]
-                            });
-                            google.setOnLoadCallback(drawChart);
-
-                            function drawChart() {
-                                var data = google.visualization.arrayToDataTable([
-                                    ['Category', 'Income', 'Spendings'],
-                                    ['Food', 0, 70],
-                                    ['Fun', 2, 100],
-                                    ['Groceries', 100, 1000],
-                                    ['Home', 0, 300],
-                                    ['Salary', 4000, 0],
-                                    ['Shopping', 0, 300],
-                                    ['Transport', 0, 300],
-                                    ['Travel', 0, 300]
-                                ]);
-                                var options = {
-                                    title: 'Income & Spendings per categories:',
-                                    hAxis: {
-                                        title: 'Category'
-                                    },
-                                    vAxis: {
-                                        title: 'Dollars'
-                                    }
-                                };
-                                var chart = new google.visualization.ColumnChart(document.getElementById('diagram'));
-                                chart.draw(data, options);
-                            }
-                        </script>`
+                        </main>`
         return view;
     },
-    after_render: async() => {}
+    after_render: async() => {
+        const spendingsSpan = document.getElementById('totalSpendings');
+        const incomeSpan = document.getElementById('totalIncome');
+        const fromDateInput = document.getElementById('from');
+        const toDateInput = document.getElementById('to');
+        let fromDate = null;
+        let toDate = null;
+
+        // Logout
+        document.getElementById('logOut').addEventListener('click', () => {
+            authorization.logOut();
+        });
+        document.getElementById('username').textContent = localStorage.getItem('currentUserEmail');
+
+        document.getElementById('find').addEventListener('click', () => {
+            fromDate = fromDateInput.value;
+            toDate = toDateInput.value;
+            dataTableArray = [];
+            setTotals();
+        });
+
+        let categoriesList;
+        let dataTableArray = [];
+
+        setTotals();
+
+        function setTotals() {
+            Transaction.getTotalSpendingsAndIcome(fromDate, toDate).then((res) => {
+                console.log(res);
+                spendingsSpan.innerHTML = `${res[0]} $`;
+                incomeSpan.innerHTML = `${res[1]} $`;
+            });
+
+            setDataTableArray().then((res) => {
+                google.load("visualization", "1", {
+                    packages: ["corechart"]
+                });
+                google.setOnLoadCallback(function drawChart() {
+                    var data = google.visualization.arrayToDataTable(res);
+                    var options = {
+                        title: 'Income & Spendings per categories:',
+                        hAxis: {
+                            title: 'Category'
+                        },
+                        vAxis: {
+                            title: 'Dollars'
+                        }
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById('diagram'));
+                    chart.draw(data, options);
+                });
+            })
+        }
+
+        function setDataTableArray() {
+            return new Promise((resolve, reject) => {
+                Category.readCategories().then((res) => {
+                    categoriesList = res;
+                    dataTableArray.push(['Category', 'Income', 'Spendings']);
+                    let promisesArray = [];
+                    for (let i = 0; i < categoriesList.length; i++) {
+                        promisesArray.push(Transaction.getTotalSpendingsAndIncomePerCategory(categoriesList[i].name, fromDate, toDate));
+                    }
+                    Promise.all(promisesArray).then((values) => {
+                        for (let i = 0; i < values.length; i++) {
+                            dataTableArray.push(values[i]);
+                        }
+                        resolve(dataTableArray);
+                    });
+                });
+            });
+        }
+    }
 }
 
 export default stats
