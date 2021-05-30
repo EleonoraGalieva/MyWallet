@@ -101,6 +101,7 @@ firebase.auth().onAuthStateChanged(user => {
     } else {
         localStorage.removeItem('currentUserEmail');
         localStorage.removeItem('currentUserId');
+        window.location.hash = '/';
     }
 });
 

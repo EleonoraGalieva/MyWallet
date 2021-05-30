@@ -1,3 +1,4 @@
+import authorization from '../database/authorization.js'
 import Transaction from '../database/models/transaction.js'
 import Category from '../database/models/category.js'
 let stats = {
