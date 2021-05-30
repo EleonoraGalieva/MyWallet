@@ -1,5 +1,6 @@
 import authorization from '../database/authorization.js'
 import Transaction from '../database/models/transaction.js'
+import Category from '../database/models/category.js'
 let wallet = {
     render: async() => {
         let view = /*html*/
@@ -75,8 +76,7 @@ let wallet = {
                             <div class="part__three">
                                 <div name="transaction" class="form" id="partThree">
                                     <label for="category">Category:</label><br>
-                                    <select id="category" name="transaction" class="input">
-                                            <option value="dollars">Food</option>                                                                                    
+                                    <select id="category" name="transaction" class="input">                                                                                 
                                     </select><br>
                                     <label for="date">Date:</label><br>
                                     <input type="date" id="date" name="transaction" class="input" required><br>
@@ -102,10 +102,12 @@ let wallet = {
         return view;
     },
     after_render: async() => {
+        loadCategories();
         loadTransactions();
         let type = 'income';
         let mode = 'add';
-        let transactionList, currentTransaction;
+        let selectCategories = document.getElementById('category');
+        let transactionList, currentTransaction, categoriesList;
         // Logout
         document.getElementById('logOut').addEventListener('click', () => {
             authorization.logOut();
@@ -145,6 +147,18 @@ let wallet = {
             document.getElementById('outcome').className = 'selected__switch right__switch';
             type = 'outcome';
         });
+
+        function loadCategories() {
+            Category.readCategories().then((res) => {
+                categoriesList = res;
+                for (let i = 0; i < categoriesList.length; i++) {
+                    let optionCategory = document.createElement('option');
+                    optionCategory.value = categoriesList[i].name;
+                    optionCategory.innerHTML = categoriesList[i].name;
+                    selectCategories.appendChild(optionCategory);
+                }
+            });
+        }
 
         document.getElementById('submitTransaction').addEventListener('click', () => {
             if (mode == 'add') {
@@ -206,11 +220,14 @@ let wallet = {
                             break;
                     }
                     let li = document.createElement('li');
-                    li.innerHTML = `<p id="trDate">` + transactionList[i].date + `</p>
+                    let index = categoriesList.findIndex(item => item.name === transactionList[i].category)
+                    Category.getIconURL(categoriesList[index].icon)
+                        .then((urlRes) => {
+                            li.innerHTML = `<p id="trDate">` + transactionList[i].date + `</p>
                         <section class="transaction">
                             <input type="checkbox" name="choose_all" class="checkbox">
                             <div class="transaction__category">
-                                <img src="assets/img/food_category.png" class="img__category">
+                                <img src="` + urlRes + `" class="img__category">
                                 <p id="trCategory">` + transactionList[i].category + `</p>
                             </div>
                             <div class="transaction__info">
@@ -233,6 +250,7 @@ let wallet = {
                                 </div>
                             </div>
                         </section>`
+                        });
                     ul.prepend(li);
                 }
                 let transactionsLiEdit = document.getElementsByName('editTransactionBtn');
@@ -267,11 +285,11 @@ let wallet = {
                 let transactionsLiDelete = document.getElementsByName('deleteTransactionBtn');
                 for (let i = 0; i < transactionsLiDelete.length; i++) {
                     transactionsLiDelete[i].addEventListener('click', function(e) {
-                        let selectesLi = e.target.closest('li');
-                        let selectedIndex = Array.from(ul.children).indexOf(selectesLi);
+                        let selectedLi = e.target.closest('li');
+                        let selectedIndex = Array.from(ul.children).indexOf(selectedLi);
                         currentTransaction = transactionList[transactionList.length - selectedIndex - 1];
                         Transaction.deleteTransaction(currentTransaction);
-                        ul.remove(selectesLi);
+                        selectedLi.parentNode.removeChild(selectedLi);
                     });
                 }
             }).catch(err => {

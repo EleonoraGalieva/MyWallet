@@ -42,7 +42,7 @@ class Category {
             }).catch((error) => {
                 console.error(error);
             });
-        })
+        });
     }
 
     static getIconURL(iconPath) {
@@ -91,6 +91,7 @@ class Category {
             });
         });
     }
+
 }
 
 export default Category
